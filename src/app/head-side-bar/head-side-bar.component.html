@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Third Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+<mat-sidenav #sidenav mode="side" opened class="mySidenav"
+             [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+             [fixedBottomGap]="options.value.bottom">
+  <expansion-overview-example></expansion-overview-example>
+</mat-sidenav>
+
+<mat-sidenav-content [formGroup]="options">
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="example-footer">Footer</mat-toolbar>

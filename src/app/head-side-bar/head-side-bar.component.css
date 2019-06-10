@@ -1,0 +1,35 @@
+.example-icon {
+  padding: 0 14px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mySidenav {
+  position: absolute; /* Position them relative to the browser window */
+  left: -155px; /* Position them outside of the screen */
+  transition: 0.6s; /* Add transition on hover */
+  padding: 15px; /* 15px padding */
+  width: 160px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+.mySidenav:hover {
+  left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

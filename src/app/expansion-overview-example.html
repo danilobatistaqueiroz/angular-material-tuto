@@ -1,0 +1,10 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let m of menus">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{m.titulo}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p *ngFor="let o of m.objetos">{{o}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
