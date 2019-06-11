@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Toolbar Title
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" 
+               (closed)="events.push('close!')" class="mySidenav">
+    <expansion-overview-example></expansion-overview-example>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="side-content">
+    <p>Events:</p>
+    <div class="example-events">
+      <div *ngFor="let e of events">{{e}}</div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

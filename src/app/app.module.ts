@@ -17,7 +17,21 @@ import { SideNavBarComponent } from './side-nav-bar/side-nav-bar.component';
 import { HeadSideBarComponent } from './head-side-bar/head-side-bar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
+
+import {MatIconRegistry} from '@angular/material/icon';
+import { SidenavToggleComponent } from './sidenav-toggle/sidenav-toggle.component';
+
+import {TokenInterceptor} from "./core/interceptor";
+import {ApiService} from "./core/api.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { FakeBackendService } from "./fake-backend.service";
+
+//export const options: Partial<IConfig> | (() => Partial<IConfig>);
+
 
 @NgModule({
   declarations: [
@@ -25,7 +39,8 @@ import {NgxMaskModule} from 'ngx-mask'
     ExpansionOverviewExample,
     SideNavBarComponent,
     HeadSideBarComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SidenavToggleComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +49,19 @@ import {NgxMaskModule} from 'ngx-mask'
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientInMemoryWebApiModule.forRoot(FakeBackendService)
+    //InMemoryWebApiModule.forRoot(FakeBackendService)
   ],
-  providers: [],
+  providers: [ApiService, {provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi : true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(matIconRegistry: MatIconRegistry) {
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
+}

@@ -1,3 +1,5 @@
+<mat-sidenav-container class="example-container">
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Third Line</span>
@@ -7,7 +9,6 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container">
 <mat-sidenav #sidenav mode="side" opened class="mySidenav"
              [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
              [fixedBottomGap]="options.value.bottom">
@@ -16,6 +17,9 @@
 
 <mat-sidenav-content [formGroup]="options">
 </mat-sidenav-content>
-</mat-sidenav-container>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+
 
 <mat-toolbar class="example-footer">Footer</mat-toolbar>
+
+</mat-sidenav-container>
