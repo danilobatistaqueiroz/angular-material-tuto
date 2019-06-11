@@ -57,6 +57,7 @@ implements OnInit, AfterContentInit, AfterViewInit {
       password: this.loginForm.controls.password.value
     }
     this.apiService.login(loginPayload).subscribe(data => {
+      console.log(data);
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
         this.router.navigate(['list-user']);
@@ -73,4 +74,23 @@ implements OnInit, AfterContentInit, AfterViewInit {
         console.log(data);
     });
   }
+  createUser(){
+    console.log('createUser');
+    let user = new User();
+    user.userId=100;
+    this.apiService.createUser(user).subscribe(data => {
+        console.log(data);
+    });
+  }
 }
+
+  class User{
+    userId:number;
+    firstName:string;
+    lastName:string;
+    password:string;
+    username:string;
+    age:number;
+    salary:number;
+    roles:string;
+  };

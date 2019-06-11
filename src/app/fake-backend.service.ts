@@ -1,5 +1,5 @@
 import { InMemoryDbService } from "angular-in-memory-web-api";
-
+import { User } from "./model/user.model";
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,16 +7,6 @@ import { Injectable } from '@angular/core';
 })
 export class FakeBackendService implements InMemoryDbService {
 	createDb() {
-	    let auth = [
-		    {
-		      status: 200,
-		      message: "success",
-		      result: {
-		        token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1NjAyODM5MzMsImV4cCI6MTU2MDMwMTkzM30.dIw3SdyqjfFPjbg1G_CJytZJRjpVaycdcExc2bx1gHk",
-		        username: "alex123"
-		      }
-		    }
-	    ];
 	    let users = [
 		      {
 				    "userId": 5,
@@ -67,6 +57,11 @@ export class FakeBackendService implements InMemoryDbService {
 		          "items": [],
 		        }
 		    ];
-  		return {users};
+  		return {users, menus};
     }
+
+    genId(users: User[]): number {
+        return users.length > 0 ? Math.max(...users.map(user => user.userId)) + 1 : 11;
+    }
+
 }
