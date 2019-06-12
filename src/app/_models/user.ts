@@ -1,8 +1,9 @@
-import { Role } from "./role.model";
+import { Role } from "./role";
 
 export class User {
 
-    userId: number;
+    id: number;
+    documento: string;
     username: string;
     password: string;
     firstName: string;

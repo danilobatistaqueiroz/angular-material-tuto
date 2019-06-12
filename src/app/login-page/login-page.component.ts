@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentInit, AfterViewInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ApiService} from "../core/api.service";
+import {ApiService, AuthenticationService} from "../_services";
 import {Router} from "@angular/router";
 declare var VMasker: any;
 
@@ -18,7 +18,7 @@ implements OnInit, AfterContentInit, AfterViewInit {
   loginForm: FormGroup;
   invalidLogin: boolean = false;
   
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     window.localStorage.removeItem('token');
@@ -49,17 +49,19 @@ implements OnInit, AfterContentInit, AfterViewInit {
   }
 
   onSubmit() {
+    console.log('onSubmit');
     if (this.loginForm.invalid) {
       return;
     }
-    const loginPayload = {
-      documento: this.loginForm.controls.documento.value,
-      password: this.loginForm.controls.password.value
-    }
-    this.apiService.login(loginPayload).subscribe(data => {
+    //const loginPayload = {
+      let documento:string = this.loginForm.controls.documento.value;
+      let password:string = this.loginForm.controls.password.value;
+    //}
+    console.log('chamando login');
+    this.authenticationService.login(documento, password).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['list-user']);
+        this.router.navigate(['home']);
       }else {
         this.invalidLogin = true;
         alert(data.message);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ApiService} from "../../core/api.service";
+import {ApiService} from "../../_services/api.service";
 
 @Component({
   selector: 'app-add-menu',
@@ -16,7 +16,7 @@ export class AddMenuComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
-      menuId: [],
+      id: [],
       menuName: ['', Validators.required],
       position: ['', Validators.required]
     });

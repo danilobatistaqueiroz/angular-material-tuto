@@ -1,9 +1,9 @@
 import { Component, OnInit , Inject } from '@angular/core';
 import {Router} from "@angular/router";
-import {Menu} from "../../model/menu.model";
+import {Menu} from "../../_models/menu";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
-import {ApiService} from "../../core/api.service";
+import {ApiService} from "../../_services/api.service";
 
 @Component({
   selector: 'app-edit-menu',
@@ -17,21 +17,21 @@ export class EditMenuComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
   ngOnInit() {
-    let menuId = window.localStorage.getItem("editMenuId");
-    if(!menuId) {
+    let id = window.localStorage.getItem("editMenuId");
+    if(!id) {
       alert("Invalid action.")
       this.router.navigate(['list-menu']);
       return;
     }
     this.editForm = this.formBuilder.group({
-      menuId: [''],
+      id: [''],
       menuName: ['', Validators.required],
       position: ['', Validators.required],
       items: ['']
     });
-    this.apiService.getMenuById(+menuId)
+    this.apiService.getMenuById(+id)
       .subscribe( data => {
-        this.editForm.setValue(data.result);
+        this.editForm.setValue(data); //data.result
       });
   }
 

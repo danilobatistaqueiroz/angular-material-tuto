@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Você é: {{currentUser.role}}</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" 
+               (closed)="events.push('close!')" class="mySidenav">
+    <app-side-nav-bar></app-side-nav-bar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="side-content">
+    <app-list-user></app-list-user>
+  </mat-sidenav-content>
+</mat-sidenav-container>

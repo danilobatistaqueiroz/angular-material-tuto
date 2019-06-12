@@ -1,7 +1,7 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import {Router} from "@angular/router";
-import {User} from "../../model/user.model";
-import {ApiService} from "../../core/api.service";
+import {User} from "../../_models/user";
+import {ApiService} from "../../_services/api.service";
 
 @Component({
   selector: 'app-list-user',
@@ -15,21 +15,18 @@ export class ListUserComponent implements OnInit {
   constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit() {
-    console.log('onInit');
     if(!window.localStorage.getItem('token')) {
       this.router.navigate(['login']);
       return;
     }
-    console.log('getUsers');
     this.apiService.getUsers()
       .subscribe( data => {
-          console.log('data:'); console.log(data[0]);
-          this.users = data;
+          this.users = data; //data.result
       });
   }
 
   deleteUser(user: User): void {
-    this.apiService.deleteUser(user.userId)
+    this.apiService.deleteUser(user.id)
       .subscribe( data => {
         this.users = this.users.filter(u => u !== user);
       })
@@ -37,13 +34,11 @@ export class ListUserComponent implements OnInit {
 
   editUser(user: User): void {
     window.localStorage.removeItem("editUserId");
-    console.log(user.userId);
-    window.localStorage.setItem("editUserId", user.userId.toString());
+    window.localStorage.setItem("editUserId", user.id.toString());
     this.router.navigate(['edit-user']);
   };
 
   addUser(): void {
-    console.log('addUser');
     this.router.navigate(['add-user']);
   };
 }

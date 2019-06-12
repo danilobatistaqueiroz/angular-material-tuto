@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ApiService} from "../../core/api.service";
+import {ApiService} from "../../_services/api.service";
 
 @Component({
   selector: 'app-add-user',
@@ -16,7 +16,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
-      userId: [],
+      id: [],
       username: ['', Validators.required],
       password: ['', Validators.required],
       firstName: ['', Validators.required],
