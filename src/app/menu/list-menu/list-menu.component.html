@@ -1,0 +1,24 @@
+<div class="col-md-6 menu-container">
+  <h2 style="margin: auto"> Menu Details</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addMenu()"> Add Menu</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>MenuName</th>
+      <th>Position</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let menu of menus">
+      <td class="hidden">{{menu.menuId}}</td>
+      <td>{{menu.menuName}}</td>
+      <td>{{menu.position}}</td>
+      <td>
+      	<button class="btn btn-success" (click)="deleteMenu(menu)"> Delete</button>
+        <button class="btn btn-success" (click)="editMenu(menu)" style="margin-left: 20px;"> Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

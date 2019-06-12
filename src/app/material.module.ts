@@ -5,6 +5,7 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatListModule,
+  MatMenuModule,
 } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -21,6 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatMenuModule,
   ],
   exports: [
     MatSidenavModule,
@@ -31,6 +33,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatMenuModule,
   ]
 })
 export class MaterialModule {}

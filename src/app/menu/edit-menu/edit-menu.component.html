@@ -1,0 +1,19 @@
+<div class="col-md-6 menu-container">
+  <h2 class="text-center">Edit Menu</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="hidden">
+      <input type="text" formControlName="menuId" placeholder="menuId" name="menuId" class="form-control" id="menuId">
+    </div>
+    <div class="form-group">
+      <label for="menuName">Menu Name:</label>
+      <input type="text" formControlName="menuName" placeholder="Menu Name" name="menuName" class="form-control" id="menuName" readonly="true">
+    </div>
+
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input formControlName="position" placeholder="Position" name="position" class="form-control" id="position">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

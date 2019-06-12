@@ -12,41 +12,31 @@ export class FakeBackendService implements InMemoryDbService {
 				    "userId": 5,
 				    "firstName": "danilo",
 				    "lastName": "batista",
-				    "username": "danilo111",
-				    "salary": 111,
-				    "age": 1
+				    "username": "danilo111"
 			    },
 			      {
 				    "userId": 6,
 				    "firstName": "queiroz",
 				    "lastName": "batista",
-				    "username": "queiroz000",
-				    "salary": 2211,
-				    "age": 21
+				    "username": "queiroz000"
 			    },
 			      {
 				    "userId": 1,
 				    "firstName": "Alex",
 				    "lastName": "Knr",
-				    "username": "alex123",
-				    "salary": 3456,
-				    "age": 332
+				    "username": "alex123"
 			    },
 			      {
 				    "userId": 2,
 				    "firstName": "danilo",
 				    "lastName": "queiroz",
-				    "username": "danilo123",
-				    "salary": 1112,
-				    "age": 11
+				    "username": "danilo123"
 			    },
 			      {
 				    "userId": 7,
 				    "firstName": "queiroz",
 				    "lastName": "queiroz",
-				    "username": "queiroz321",
-				    "salary": 33,
-				    "age": 33
+				    "username": "queiroz321"
 			    }
 		    ];
 		    let menus = [

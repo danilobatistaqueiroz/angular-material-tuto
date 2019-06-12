@@ -15,7 +15,7 @@ class Login {
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  //baseUrl: string = 'http://localhost:8080/';
+  //baseUrl: string = `${config.apiUrl}/`;
   baseUrl: string = "api/";
   baseUserUrl: string = this.baseUrl+'users/';
   baseRoleUrl: string = this.baseUrl+'roles/';
@@ -36,6 +36,7 @@ export class ApiService {
   }
 
   getUsers() : Observable<ApiResponse> {
+    console.log('getUsers'); console.log(this.baseUserUrl);
     return this.http.get<ApiResponse>(this.baseUserUrl);
   }
 
